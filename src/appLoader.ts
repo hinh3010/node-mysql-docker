@@ -4,6 +4,7 @@ import cors from 'cors';
 import { HttpResponse } from './domain/response';
 import { Code } from './enum/code.enum';
 import { Status } from './enum/status.enum';
+import patientRoutes from './routes/patient.r';
 
 
 export class AppLoader {
@@ -28,9 +29,7 @@ export class AppLoader {
         this.app.use(express.json());
     }
     routes(): void {
-        this.app.use('/adu', (req, res, next) => {
-            res.json({ adu: 'adu' })
-        })
+        this.app.use('/patient', patientRoutes)
         this.app.get('/', (_: Request, res: Response) =>
             res.status(200).send(new HttpResponse(Code.OK, Status.OK, this.WELCOME))
         );
