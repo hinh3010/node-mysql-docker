@@ -1,11 +1,15 @@
 import express, { Request, Response, Application } from 'express';
 import ip from 'ip';
 import cors from 'cors';
+import { HttpResponse } from './domain/response';
+import { Code } from './enum/code.enum';
+import { Status } from './enum/status.enum';
 
 
 export class AppLoader {
     private readonly app: Application;
     private readonly APPLICATION_RUNNING = 'application is running on:';
+    private readonly WELCOME = 'Welcome to the Patients API v1.0.0';
     private readonly ROUTE_NOT_FOUND = 'Route does not exist on the server';
 
     constructor(private readonly port: (string | number) = process.env.PORT || 3002) {
@@ -28,12 +32,10 @@ export class AppLoader {
             res.json({ adu: 'adu' })
         })
         this.app.get('/', (_: Request, res: Response) =>
-            res.status(200).json({ message: 'ok' })
-            // .send(new HttpResponse(200, 'OK', 'Welcome to the Patients API v1.0.0'))
+            res.status(200).send(new HttpResponse(Code.OK, Status.OK, this.WELCOME))
         );
         this.app.all('*', (_: Request, res: Response) =>
-            res.status(404).json({ message: this.ROUTE_NOT_FOUND })
-            // .send(new HttpResponse(404, 'NOT_FOUND', this.ROUTE_NOT_FOUND))
+            res.status(404).send(new HttpResponse(Code.NOT_FOUND, Status.NOT_FOUND, this.ROUTE_NOT_FOUND))
         );
     }
 }
