@@ -1,0 +1,39 @@
+###
+get http://172.18.193.125:3003/patient
+
+###
+get http://172.18.193.125:3003/patient/13
+
+###
+delete http://172.18.193.125:3003/patient/13
+
+###
+post http://172.18.193.125:3003/patient
+Content-Type: application/json
+
+{
+    "first_name" :"first_name",
+    "last_name" :"last_name",
+    "email" :"emaiswewell@e",
+    "address" :"address",
+    "diagnosis" :"diagnos0is",
+    "phone" :"pheweeone",
+    "status" :"pending",
+    "image_url" :"image_url"
+}
+
+
+###
+put http://172.18.193.125:3003/patient/1
+Content-Type: application/json
+
+{
+    "first_name" :"hao",
+    "last_name" :"nam",
+    "email" :"haonam@gamil.com",
+    "address" :"address",
+    "diagnosis" :"log",
+    "phone" :"09238626713",
+    "status" :"active",
+    "image_url" :"http://172.18.193.125:3003/patient/"
+}

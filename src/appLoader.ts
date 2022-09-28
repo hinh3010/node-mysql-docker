@@ -13,7 +13,7 @@ export class AppLoader {
     private readonly WELCOME = 'Welcome to the Patients API v1.0.0';
     private readonly ROUTE_NOT_FOUND = 'Route does not exist on the server';
 
-    constructor(private readonly port: (string | number) = process.env.PORT || 3002) {
+    constructor(private readonly port: (string | number) = process.env.SERVER_PORT || 3002) {
         this.app = express();
         this.middleware()
         this.routes()

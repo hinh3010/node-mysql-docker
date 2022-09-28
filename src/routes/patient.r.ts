@@ -1,16 +1,15 @@
 import { Router } from 'express';
-import { getPatients } from '../controllers/patient.c';
-// import { createPatient, deletePatient, getPatient, getPatients, updatePatient } from '../controller/patient.controller';
+import { createPatient, deletePatient, getPatient, getPatients, updatePatient } from '../controllers/patient.c';
 
 const patientRoutes = Router();
 
 patientRoutes.route('/')
     .get(getPatients)
-//   .post(createPatient);
+    .post(createPatient);
 
 patientRoutes.route('/:patientId')
-//   .get(getPatient)
-//   .put(updatePatient)
-//   .delete(deletePatient);
+    .get(getPatient)
+    .put(updatePatient)
+    .delete(deletePatient);
 
 export default patientRoutes;
